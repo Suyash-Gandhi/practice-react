@@ -1,0 +1,100 @@
+
+Q1 Create a React component that displays “Hello React” in an <h1> tag.
+
+Q2 Create a component that takes name as a prop and displays Hello, {name}.
+
+Q3 Create a button that toggles text between "ON" and "OFF" on click.
+
+Q4 Create a component that accepts a list of items as props and renders them as a list.
+
+Q5 Create a counter component with increment and decrement buttons.
+
+Q6 Create a component that changes text color on button click.
+
+Q7 Create a component that shows or hides a paragraph when a button is clicked.
+
+Q8 Create a component that disables a button after 3 clicks.
+
+Q9 Create a component that displays the current date and time using state.
+
+Q10 Create a component that takes an input and displays the typed text in real-time.
+
+Q11 Create a component that has multiple buttons, and each one updates a different state value.
+
+Q12 Create a component that conditionally renders a message if a number is even or odd.
+
+Q13 Pass a function from parent to child and call it from the child on a button click.
+
+Q14 Create a component that renders two child components and passes different props to each.
+
+Q15 Create a component that resets state values back to default on button click.
+
+Q16 Create a component that uses useEffect to log a message on every render.
+
+Q17 Create a component that only logs in useEffect when a specific state changes.
+
+Q18 Create a component that fetches data from a dummy API using useEffect.
+
+Q19 Create a form with multiple fields and track values using one state object.
+
+Q20 Create a dropdown menu where selected option updates a state value.
+
+Q21 Build a toggle theme (light/dark) feature using state and conditional classes.
+
+Q22 Create a component that shows a list of users and has a filter input to filter by name.
+
+Q23 Create a component that renders a list of checkboxes and tracks selected items.
+
+Q24 Create a component that calculates total of numbers entered in multiple input fields.
+
+Q25 Implement a component with tab-like behavior using state.
+
+Q26 Create a component that uses useRef to access an input field and focus on it on mount.
+
+Q27 Create a component that tracks how many times a user clicks without re-rendering a count display (useRef).
+
+Q28 Create a timer or stopwatch using useEffect and setInterval.
+
+Q29 Create a component that tracks mouse coordinates using state and useEffect.
+
+Q30 Create a component that remembers user preferences (color, font size) using state.
+
+Q31 Create a component that conditionally applies classes/styles based on multiple states.
+
+Q32 Implement a component that handles and displays error messages for form validations.
+
+Q33 Use useEffect cleanup to log a message when a component unmounts.
+
+Q34 Create a component that fetches paginated data and renders next/previous buttons.
+
+Q35 Implement a controlled vs uncontrolled input example and observe differences.
+
+Q36 Create a custom hook to manage form input state.
+
+Q37 Create a custom hook to fetch data from any API endpoint.
+
+Q38 Create a custom hook that detects window width (for responsive design).
+
+Q39 Create a custom hook that checks if a key (e.g., ESC) is pressed.
+
+Q40 Use React Context API to pass a theme (light/dark) between deeply nested components.
+
+Q41 Create a component that uses Context API to manage user login state globally.
+
+Q42 Create a component that uses useMemo to optimize expensive calculation logic.
+
+Q43 Use useCallback to prevent unnecessary re-renders of child components.
+
+Q44 Create a list component that only re-renders changed items using React.memo().
+
+-Q45 Build a multi-step form with step indicators and validation at each step.
+
+Q46 Use useReducer to manage a more complex state like a shopping cart.
+
+Q47 Implement a dark/light mode toggle using Context API and custom hook.
+
+Q48 Create a form that auto-saves to localStorage every few seconds using useEffect.
+
+Q49 Create a component that lazy loads another component using React.lazy and Suspense.
+
+Q50 Create a dynamic form builder where fields are generated based on JSON schema.

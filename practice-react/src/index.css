@@ -1,0 +1,20 @@
+.dark{
+    background-color: rgba(0, 0, 0, 0.236);
+}
+
+.light{
+    background-color: rgb(248, 247, 247);
+}
+
+.active {
+  border: 2px solid rgba(0, 0, 0, 0.236);
+  border-radius: 5px;
+  transform: scale(1.05);
+  margin: 30px;
+  padding: 10px;
+}
+
+.font{
+    font-size: 15px;
+    font-family:cursive;
+}
