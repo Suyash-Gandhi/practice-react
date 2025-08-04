@@ -4,9 +4,9 @@ import Questionrenderer from './question-renderer'
 
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+ 
     <>
       <Questionrenderer />
     </>
-  </StrictMode>,
+  
 )

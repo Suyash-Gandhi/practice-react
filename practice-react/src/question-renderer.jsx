@@ -1,4 +1,3 @@
-import React from 'react'
 import Q02props from "./Q02-props"
 import Q03usestate from "./Q03-usestate"
 import Q04listofprops from "./Q04-listofprops"
@@ -33,8 +32,16 @@ import Q36customhooks from './Q36-custom-hooks'
 import Q37apicallusingcustomhooks from "./Q37-api-call-using-custom-hooks"
 import Q38windowwidth from "./Q38-window-width"
 import Q39keypress from "./Q39-key-press"
-
 import Q41contextapilogin from './Q41-context-api-login'
+import Q42usememo from "./Q42-usememo"
+import Q43usecallback from "./Q43-usecallback"
+import Q44reactmemo from "./Q44-react-memo"
+import Q45multistepfrom from "./Q45-multi-stepfrom"
+import Q46usereducer from "./Q46-usereducer"
+import Q47toggleusingcontextapi from "./Q47-toggle-using-contextapi"
+import Q48autosave from "./Q48-auto-save"
+import Q49lazyloading from "./Q49-lazy-loading"
+import Q50formbuilder from "./Q50-form-builder"
 
 import App from './App'
 import { useState } from 'react'
@@ -52,7 +59,9 @@ const render = {
   30: Q30userprefrence, 31: Q31conditionallyapplyingclasses, 32: Q32formvalidationerror,
   33: Q33useeffectcomponentunmount, 34: Q34pagination, 35: Q35controledanduncontroledinput,
   36: Q36customhooks, 37: Q37apicallusingcustomhooks, 38: Q38windowwidth,
-  39: Q39keypress, 40: Q40contextapi, 41: Q41contextapilogin
+  39: Q39keypress, 40: Q40contextapi, 41: Q41contextapilogin,42:Q42usememo,
+  43:Q43usecallback,44:Q44reactmemo,45:Q45multistepfrom,46:Q46usereducer,
+  47:Q47toggleusingcontextapi,48:Q48autosave,49:Q49lazyloading,50:Q50formbuilder
 
 
 }
