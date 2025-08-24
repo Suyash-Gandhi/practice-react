@@ -4,16 +4,16 @@ import "./index.css"
 
 function Q6togelcoller() {
 
-    const [color,setcolor]=useState(0)
+  const [color, setcolor] = useState(0)
 
-const toggel=()=>{
+  const toggel = () => {
     setcolor(!color)
-}
+  }
 
   return (
-    <div className={color?"red":"green"}>
-        color
-<button onClick={toggel}>toggel</button>
+    <div className={color ? "red" : "green"}>
+      color
+      <button onClick={toggel}>toggel</button>
     </div>
   )
 }

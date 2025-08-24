@@ -27,6 +27,7 @@ function Q42usememo() {
             <input type="number" onChange={(e) => setinput(e.target.value)} />
             <button onClick={() => {setcount(input) ,setshouldCompute(true)}}>click</button>
             <p>result:{heavycomputation}</p>
+            <h4>time taken shown in console</h4>
         </div>
     )
 }

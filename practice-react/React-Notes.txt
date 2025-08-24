@@ -1,0 +1,407 @@
+                        PORPS
+                    USE STATE HOOK
+                    USE EFFECT HOOK
+                  CONDITIONAL RENDRING
+                     DATE OBJECT
+                    FEATCH METHOD
+                  ARRAY DESTRUCTURING
+                  OBJECT DESTRUCTURING
+                  SPREAD/REST OPERATOR
+
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+
+                    CONTEXT API
+
+The Context API in React is a built-in way to manage and share 
+state (data) across multiple components without having to pass 
+props manually at every level (also called prop drilling).
+
+🔑Core Idea
+
+Normally, in React, data flows from parent → child using props. 
+If a piece of data is needed deeply in the component tree, it 
+has to be passed down through every intermediate component, 
+even if they don’t use it. This becomes messy as your app grows.
+
+The Context API solves this by creating a kind of “global state”
+that any component can access directly, no matter how deeply 
+nested it is.
+
+Context API can be used in two ways:
+
+1.Using the Consumer component
+2.Using the useContext hook
+
+Using the Consumer Component
+
+Every Context object (created using createContext) comes 
+with a Consumer component.
+This Consumer component expects a function as a child. That 
+function gets access to the current context value.
+This method was more common before React Hooks (in class 
+components or older React versions).
+Drawback: The code can look a bit messy (nested functions) 
+especially when multiple contexts are involved.
+
+When to use:
+
+1.If you are working with class components or older React codebases.
+2.If you want to avoid hooks.
+
+Using the useContext Hook
+
+With the introduction of React Hooks, the useContext hook 
+became the modern, cleaner way to consume context.
+You simply call useContext(SomeContext) inside your functional 
+component, and React gives you the current value.
+It removes the need for function-as-a-child syntax, making 
+code shorter and easier to read.
+
+When to use:
+
+1.If you’re working with functional components (most common in
+modern React).
+2.If you prefer cleaner and less verbose syntax.
+
+⚖️ Quick Comparison
+
+| Feature          | Consumer Component                      | `useContext` Hook                    |
+| -----------------|---------------------------------------- | ------------------------------------ |
+| Syntax style     | Function-as-a-child pattern             | Direct hook call inside component    |
+| Best suited for  | Class components / older React projects | Functional components / modern React |
+| Readability      | Verbose (nested)                        | Clean and straightforward            |
+| Popularity today | Rare (legacy usage)                     | Standard approach                    |
+
+IMPORTANT NOTE:
+
+🔎 What you think is happening
+
+You created:
+
+Parent (Toggle) → sets up context.
+Child (Q40contextapiwithusecontexthook) → consumes context.
+
+You expect:
+
+“Since Parent provides context and Child consumes it, why do 
+I need to call Parent (Toggle) in the renderer? Can’t I just 
+render the Child directly?”
+
+🛑 Why it doesn’t work that way
+
+React context doesn’t care about files (parent/child 
+relationship in your codebase).
+It only cares about the render tree (runtime hierarchy).
+
+Right now, your questionrenderer is doing this:
+
+40: Q40contextapiwithusecontexthook
+
+
+So React tree looks like:
+
+questionrenderer
+   └── Q40contextapiwithusecontexthook
+
+
+Notice: ❌ There’s no Provider above the consumer → so 
+useContext(themeToggle) returns undefined.
+
+Even though you defined a parent file (Toggle.jsx) that wraps 
+the child, you didn’t actually render that parent in the React 
+tree.
+
+✅ Why you need to render Toggle
+
+When you do:
+
+40: Toggle
+
+
+The React tree becomes:
+
+questionrenderer
+   └── Toggle (Provider)
+          └── Q40contextapiwithusecontexthook (Consumer)
+
+
+✔ Now the consumer is inside the Provider, so context works.
+
+📌 Key takeaway
+
+1.File hierarchy doesn’t matter. Just because one file imports 
+another doesn’t make it a parent in React terms.
+
+2.Render tree matters. The Provider must literally wrap the 
+Consumer in JSX for context to flow.
+
+3.That’s why you need to render Toggle instead of rendering 
+Q40contextapiwithusecontexthook directly.
+
+👉 Think of it like this:
+
+1.Context is like Wi-Fi.
+
+2.The Provider is the Wi-Fi router.
+
+3.The Consumer is the phone/laptop.
+
+4.If the device is not inside the Wi-Fi range (render tree), 
+it won’t get the internet (context) — even if you bought the 
+router (wrote the Provider file) but never plugged it in 
+(rendered it).
+
+
+-----------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+                     USE REDUCER HOOK
+
+useReducer is a React Hook that provides an alternative to 
+useState for managing state, especially when the logic for 
+updating state is more complex or when multiple related values 
+need to be handled together.
+
+🔹 Basic Idea
+
+1. Instead of calling setState directly, you define a reducer function.
+
+2. A reducer takes the current state and an action (what you want to do)
+   and returns a new state.
+
+3. This is inspired by the concept of reducers in Redux.
+
+🔹 Syntax
+const [state, dispatch] = useReducer(reducer, initialState);
+
+1. state: The current state value.
+
+2. dispatch: A function to send (dispatch) actions that describe what you want to do.
+
+3. reducer: A function (state, action) => newState.
+
+4. initialState: The starting state.
+
+🔹 When to Use useReducer
+
+1. When state logic is complex (e.g., multiple sub-values).
+
+2. When the next state depends on the previous state.
+
+3. When you want a cleaner way to manage multiple actions on the same state.
+
+4. When the state logic is easier to test separately (since the 
+   reducer is just a pure function).
+
+👉 In short:
+
+Use useState for simple state.
+
+Use useReducer for complex state management or when the logic 
+is better organized in one reducer function.
+
+🔹 What is a simple state?
+
+A simple state is when your component needs to track a single, 
+straightforward value or a small number of independent values.
+
+Example:
+
+const [count, setCount] = useState(0);   // just a number
+const [isOpen, setIsOpen] = useState(false); // just a boolean
+
+Here, each state update is direct (setCount(count+1)), so 
+useState works perfectly.
+
+🔹 What is a complex state?
+
+A complex state is when:
+
+1. The state is an object or array with multiple related properties.
+
+2. Updating one part of the state depends on or affects other parts.
+
+3. There are multiple types of actions you need to handle.
+
+4. State transitions have logic (not just "replace value").
+
+🔹 Example 1: Complex object state
+
+Suppose you’re managing a form:
+
+const [form, setForm] = useState({
+  name: "",
+  email: "",
+  age: "",
+});
+
+
+Updating one field means carefully merging the rest:
+
+setForm({ ...form, name: "Alice" });
+
+
+If the form grows larger and logic like validation/reset is 
+added, this gets messy → better handled with useReducer.
+
+🔹 Example 2: Complex array state
+
+Say you have a todo list:
+
+const [todos, setTodos] = useState([]);
+
+
+You need to:
+
+Add a todo
+Toggle completion
+Delete a todo
+Reset all todos
+
+Each requires a different update logic. Instead of juggling many setTodos calls with spreads/filters/maps, a reducer organizes them:
+
+dispatch({ type: "add", payload: "Buy milk" });
+dispatch({ type: "toggle", id: 1 });
+dispatch({ type: "delete", id: 2 });
+
+🔹 So in short:
+
+Simple state → a single piece of data, updated in a straightforward way.
+
+Complex state → multiple related pieces of data or updates that 
+involve conditional logic, branching, or different action types.
+
+🔹 why is reducer function outside the counter unlike other hooks
+
+🔹 1 Reducer must be a pure function
+
+A reducer should take `state` + `action` and return only the new state, without depending on component props, local variables, or side effects.
+By keeping it outside, you make sure it does not “accidentally” rely on the component’s internals.
+This makes it more predictable and reusable.
+
+🔹 2 Prevents re-creation on every render
+
+If you defined the reducer function inside the component:
+
+const Counter = () => {
+  const reducer = (state, action) => { ... };  // recreated on each render ❌
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
+};
+
+1. Every time `Counter` re-renders, the reducer function would 
+   be created again.
+2. That’s wasteful and can cause unnecessary overhead (though 
+   React optimizes some of this, it’s still bad practice).
+3. By moving it outside, the reducer function is created only once.
+
+🔹 3 Reusability
+
+1. Reducer functions can often be reused in multiple components 
+   (or even tested separately).
+2. By keeping them outside, you can import and use them in 
+   different places easily.
+3. Example: you could have one `counterReducer` used in `Counter`
+   and in another component.
+
+🔹 4 Convention and Readability
+
+ Separating logic (reducer) and UI (component JSX) makes the code cleaner.
+ It’s similar to separating business logic from presentation.
+
+
+✅ But technically, you can write the reducer inside the 
+component — React won’t stop you. It’s just not recommended because:
+
+ It gets recreated every render.
+ Harder to test and reuse.
+ Messier separation of concerns.
+
+
+👉 So the short answer:
+The reducer is outside because it’s a pure function, should not 
+depend on component scope, and keeping it outside avoids 
+unnecessary re-creation, improves reusability, and keeps code 
+clean.
+
+
+🔹 1. What is `type`?
+
+you’re calling `dispatch` with an action object. That object has 
+a property called `type`. Let’s unpack it:
+ 
+`type` is just a string (or sometimes a constant) that describes
+what kind of action you want the reducer to perform.
+
+It’s like a label telling the reducer:
+
+  > "Hey reducer, I want to increment the count"
+
+Example actions you dispatch:
+
+{ type: "increment" }
+{ type: "decrement" }
+{ type: "reset" }
+
+
+🔹 2. Why is it used?
+
+The reducer function looks at `action.type` to decide what logic to run.
+In your reducer:
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    case "reset":
+      return { count: 0 };
+    default:
+      return state;
+  }
+};
+
+
+ If `type` is `"increment"`, it adds 1.
+ If `type` is `"decrement"`, it subtracts 1.
+ If `type` is `"reset"`, it sets count back to 0.
+
+Without `type`, the reducer wouldn’t know which branch of logic to execute.
+
+
+🔹 3. Why not just call functions directly?
+
+You could write separate functions (`increment()`, `decrement()`
+, etc.), but:
+
+`dispatch` + `type` keeps all state logic centralized in one `reducer`.
+It scales better when you have many actions and complex logic.
+It follows the Flux/Redux pattern, which is battle-tested in large apps.
+
+---
+
+🔹 4. Can action have more than `type`?
+
+Yes ✅.
+You can add extra data (called `payload`) along with `type`.
+
+Example:
+
+dispatch({ type: "incrementBy", payload: 5 });
+
+
+Reducer:
+
+case "incrementBy":
+  return { count: state.count + action.payload };
+
+
+Now you can increment by any number.
+
+👉 In short:
+
+`type` is a label that tells the reducer what action to perform.
+It’s used because the reducer needs a standardized way to decide how to update state.
+For bigger apps, you often send `{ type, payload }` objects for clarity and flexibility.
+

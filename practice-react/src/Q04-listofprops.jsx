@@ -1,11 +1,9 @@
-import React from 'react'
-
-function Q4listofprops(props) {
+function Q4listofprops({ items }) {
   return (
     <ol>
-        <li>age : {props.age}</li>
-        <li>eyes : {props.eyes}</li>
-        <li>height : {props.height}</li>
+      {items.map((item, index) => (
+        <li key={index}>{item.key} : {item.value}</li>
+      ))}
     </ol>
   )
 }

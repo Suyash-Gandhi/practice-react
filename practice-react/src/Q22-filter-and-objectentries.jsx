@@ -67,6 +67,7 @@ export default function Q22filtermethod() {
       <input type="text" onChange={(e)=>{
         setinputn(e.target.value)
       }} />
+      
       <pre>{JSON.stringify(userdata, null, 2)}</pre>
       {
 
@@ -75,7 +76,7 @@ export default function Q22filtermethod() {
             userdata.map(user => (
               Object.entries(userdata).map(([key, value]) => (
                 <p key={key}>
-                  {key}:{typeof value === "object" ? JSON.stringify(value) : value}
+                  
                 </p>
               ))
             ))
@@ -83,7 +84,11 @@ export default function Q22filtermethod() {
           }
         </div>
       }
-
+<ul>
+                {user.map((u => (
+                    <li key={u.id}>{u.name} - {u.email}</li>
+                )))}
+            </ul>
     </div>
   )
 }

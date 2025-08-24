@@ -25,6 +25,8 @@ const [show,setshow]=useState(true)
 {show?"unmount":"mount"}
 </button>
 {show&&<Unmount/>}
+
+Result in console
     </div>
   )
 }

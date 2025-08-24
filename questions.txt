@@ -87,7 +87,7 @@ Q43 Use useCallback to prevent unnecessary re-renders of child components.
 
 Q44 Create a list component that only re-renders changed items using React.memo().
 
--Q45 Build a multi-step form with step indicators and validation at each step.
+Q45 Build a multi-step form with step indicators and validation at each step.
 
 Q46 Use useReducer to manage a more complex state like a shopping cart.
 

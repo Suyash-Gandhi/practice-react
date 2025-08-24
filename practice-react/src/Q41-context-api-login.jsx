@@ -1,24 +1,17 @@
-import { creditials } from "./child"
+import React from 'react'
+import { useContext } from 'react'
+import { loginContext } from "./parent"
 
 function Q41contextapilogin() {
 
-    return (
+  const { login, userLogin } = useContext(loginContext)
 
-
-        <creditials.Consumer>
-            {
-                ({ islogin, setislogin }) => {
-                    return (
-                        <div>
-                            <h3>user is {islogin ? "loged in" : "loged out"}</h3>
-                            <button onClick={() => setislogin(!islogin)}>{islogin ? "log out" : "log in"}</button>
-                        </div>
-                    )
-                }
-            }
-        </creditials.Consumer>
-
-    )
+  return (
+    <div>
+      <h2>{login}</h2>
+      <button onClick={userLogin}>login</button>
+    </div>
+  )
 }
 
 export default Q41contextapilogin

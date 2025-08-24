@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Listitem } from "./child";
+import { Listitem } from "./parent";
 import { useCallback } from "react";
 
 function Q44reactmemo() {

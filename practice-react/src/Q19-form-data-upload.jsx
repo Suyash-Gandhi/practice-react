@@ -7,7 +7,8 @@ function Q19formdataupload() {
     const [formdata, setformdata] = useState({
         name: "",
         email: "",
-        surname: ""
+        surname: "",
+        age:0
     })
 
     const handlesubmit = (e) => {
@@ -37,7 +38,7 @@ function Q19formdataupload() {
                 {Object.entries(formdata).map(([key, value]) => (<li key={key}> {key}:{value}</li>))}
             </ul>
 
-
+Submited data in consol
         </div>
     )
 }
